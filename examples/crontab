@@ -1,0 +1,9 @@
+CRON_TZ=America/Chicago
+MAILTO=ops@example.com
+# nightly backup, usually takes ~40 minutes
+30 2 * * * /usr/local/bin/backup.sh  # duration=40m
+0 * * * * /usr/local/bin/rotate-logs
+0 1 * * * /usr/local/bin/reindex  # duration=90m
+*/15 * * * * /usr/local/bin/healthcheck  # duration=20m
+0 0 1 * 1 /usr/local/bin/monthly-report
+0 0 30 2 * /usr/local/bin/leap-cleanup
